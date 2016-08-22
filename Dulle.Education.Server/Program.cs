@@ -33,57 +33,30 @@ namespace Dulle.Education.Server
                         Endpoints = new[] { "127.0.0.1:47500..47509" }
                     },
                     SocketTimeout = TimeSpan.FromSeconds(0.3)
-                },
-                IncludedEventTypes = EventType.CacheAll,
+                },                
                 CacheConfiguration = new[]
                 {
                     new CacheConfiguration
                     {
-                        StartSize = 100 * 1024 * 1024,
+                        StartSize = 1073741824,
+                        EnableSwap = false,
                         CacheMode = CacheMode.Partitioned,
                         Backups = 0,
-                        OffHeapMaxMemory = 10 * 1024L * 1024L * 1024L,
-                        EvictionPolicy = new LruEvictionPolicy { MaxSize = 1000000 }
+                        OffHeapMaxMemory = 10737418240,
+                        EvictionPolicy = new LruEvictionPolicy { MaxSize = 10000000 },
+                        RebalanceBatchSize = 1024 * 1024,
+                        CopyOnRead = false                                                
                     }
                 },
                 BinaryConfiguration = new BinaryConfiguration(typeof(Person),
                         typeof(PersonFilter))
             };
-            IIgnite ignite = Ignition.Start(cfg);
-
-            ICache<int, Person> cache = ignite.GetOrCreateCache<int, Person>(
-                new CacheConfiguration("persons", typeof(Person)));
-
-            Console.WriteLine(">>> Loading persons");
-            cache.PutAll( CreateData(400000) );
-            Console.WriteLine(">>> Loading persons DONE");
+            cfg.JvmInitialMemoryMb = 10240;
+            cfg.JvmMaxMemoryMb = 16384;
+            
+            IIgnite ignite = Ignition.Start(cfg);           
+            
             Console.ReadKey();
         }
-
-        private static Dictionary<int, Person> CreateData( int maxRecords )
-        {
-            string[] firstNames = File.ReadAllLines(@"c:\users\wim\documents\visual studio 2015\Projects\Dulle.Education.Server\Dulle.Education.Server\First_Names.csv", Encoding.UTF8);
-            string[] lastNames = File.ReadAllLines(@"c:\users\wim\documents\visual studio 2015\Projects\Dulle.Education.Server\Dulle.Education.Server\Last_Names.csv", Encoding.UTF8);
-            int key = 0;
-            Dictionary<int, Person> persons = new Dictionary<int, Person>();
-            foreach (string lastName in lastNames)
-            {
-                foreach (string firstName in firstNames)
-                {
-                    Random randomAge = new Random();
-
-                    persons[key] = new Person { Name = lastName, Age = randomAge.Next(120), FirstName = firstName };
-                    key++;
-
-                    if( key > maxRecords )
-                    {
-                        return persons;
-                    }
-                }
-            }
-
-            return persons;
-        }
-
     }    
 }

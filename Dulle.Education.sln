@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dulle.Education.Client", "D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dulle.Education.Model", "Dulle.Education.Model\Dulle.Education.Model.csproj", "{80C3B2DF-A67E-4FB8-AC01-9F4EF8A58B76}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dulle.Education.Amq.Consumer", "Dulle.Education.Amq.Consumer\Dulle.Education.Amq.Consumer.csproj", "{9A84AB0D-0FC6-4A05-A514-C589F64AE101}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dulle.Education.Amq.Producer", "Dulle.Education.Amq.Producer\Dulle.Education.Amq.Producer.csproj", "{18EE3FE5-78C3-4504-91F3-18153E608100}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{80C3B2DF-A67E-4FB8-AC01-9F4EF8A58B76}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80C3B2DF-A67E-4FB8-AC01-9F4EF8A58B76}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80C3B2DF-A67E-4FB8-AC01-9F4EF8A58B76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A84AB0D-0FC6-4A05-A514-C589F64AE101}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A84AB0D-0FC6-4A05-A514-C589F64AE101}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A84AB0D-0FC6-4A05-A514-C589F64AE101}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A84AB0D-0FC6-4A05-A514-C589F64AE101}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18EE3FE5-78C3-4504-91F3-18153E608100}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18EE3FE5-78C3-4504-91F3-18153E608100}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18EE3FE5-78C3-4504-91F3-18153E608100}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18EE3FE5-78C3-4504-91F3-18153E608100}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

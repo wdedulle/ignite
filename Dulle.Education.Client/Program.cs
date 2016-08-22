@@ -29,22 +29,21 @@ namespace Dulle.Education.Client
                         Endpoints = new[] { "127.0.0.1:47500..47509" }
                     },
                     SocketTimeout = TimeSpan.FromSeconds(0.3)
-                },
-                IncludedEventTypes = EventType.CacheAll,
+                },                
                 BinaryConfiguration = new BinaryConfiguration(typeof(Person),
                         typeof(PersonFilter))                
             };
             IIgnite ignite = Ignition.Start(cfg);
 
             ICache<int, Person> cache = ignite.GetCache<int, Person>("persons");
+            Console.WriteLine(cache.GetSize());
+            //var scanQuery = new ScanQuery<int, Person>(new PersonFilter());
+            //IQueryCursor<ICacheEntry<int, Person>> queryCursor = cache.Query(scanQuery);
 
-            var scanQuery = new ScanQuery<int, Person>(new PersonFilter());
-            IQueryCursor<ICacheEntry<int, Person>> queryCursor = cache.Query(scanQuery);
+            //ShowResult(queryCursor);
 
-            ShowResult(queryCursor);
-
-            var sqlQuery = new SqlQuery(typeof(Person), "where age > ?", 100);
-            queryCursor = cache.Query(sqlQuery);
+            var sqlQuery = new SqlQuery(typeof(Person), "where firstname like ?", "%del%");
+            IQueryCursor<ICacheEntry<int, Person>> queryCursor = cache.Query(sqlQuery);
 
             ShowResult(queryCursor);
             Console.ReadKey();
