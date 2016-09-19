@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChapmanLengthDeviation.cs" />
     <Compile Include="JarosWrinkler.cs" />
     <Compile Include="Levenshtein.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

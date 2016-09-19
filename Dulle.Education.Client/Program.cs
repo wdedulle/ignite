@@ -37,15 +37,15 @@ namespace Dulle.Education.Client
 
             ICache<int, Person> cache = ignite.GetCache<int, Person>("persons");
             Console.WriteLine(cache.GetSize());
-            //var scanQuery = new ScanQuery<int, Person>(new PersonFilter());
-            //IQueryCursor<ICacheEntry<int, Person>> queryCursor = cache.Query(scanQuery);
-
-            //ShowResult(queryCursor);
-
-            var sqlQuery = new SqlQuery(typeof(Person), "where firstname like ?", "%del%");
-            IQueryCursor<ICacheEntry<int, Person>> queryCursor = cache.Query(sqlQuery);
+            var scanQuery = new ScanQuery<int, Person>(new PersonFilter("batiel"));
+            IQueryCursor<ICacheEntry<int, Person>> queryCursor = cache.Query(scanQuery);
 
             ShowResult(queryCursor);
+
+            //var sqlQuery = new SqlQuery(typeof(Person), "where firstname like ?", "%del%");
+            //IQueryCursor<ICacheEntry<int, Person>> queryCursor = cache.Query(sqlQuery);
+
+            //ShowResult(queryCursor);
             Console.ReadKey();
         }
         

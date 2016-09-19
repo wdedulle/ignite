@@ -51,6 +51,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dulle.Education.StringComparison\Dulle.Education.StringComparison.csproj">
+      <Project>{58c263b5-145d-42d0-a148-974579ffc2e0}</Project>
+      <Name>Dulle.Education.StringComparison</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

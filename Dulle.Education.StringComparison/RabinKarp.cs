@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dulle.Education.StringComparison
 {
-    class RabinKarp
+    public class RabinKarp
     {
         public static double Calculate(string source, string target)
         {                         
